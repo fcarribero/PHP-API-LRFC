@@ -1,0 +1,19 @@
+{
+    "name": "advans/php-api-lrfc",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Francisco Carribero",
+            "email": "francisco.carribero@gmail.com"
+        }
+    ],
+    "require": {
+        "ext-json": "*",
+        "ext-curl": "*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
+    }
+}
