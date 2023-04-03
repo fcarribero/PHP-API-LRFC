@@ -71,7 +71,7 @@ class Lrfc {
         }
     }
 
-    protected function call($method, $verb = 'GET', $params = null): string {
+    protected function call($method, $verb = 'GET', $params = null) {
         $verb = strtoupper($verb);
         $url = $this->config->base_url . $method . ($verb == 'GET' && $params ? '?' . http_build_query($params) : '');
         $curl = curl_init();
