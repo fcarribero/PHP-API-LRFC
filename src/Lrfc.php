@@ -26,7 +26,7 @@ class Lrfc {
             throw new LrfcException('El RFC no es válido');
         }
         try {
-            return $this->call("v2/lrfc/consultar/by-rfc/{$fecha}/{$rfc}");
+            return json_decode($this->call("v2/lrfc/consultar/by-rfc/{$fecha}/{$rfc}"));
         } catch (LrfcException $e) {
             if ($e->getCode() == 404) {
                 return null;
@@ -42,7 +42,7 @@ class Lrfc {
             $fecha = date('Y-m-d', strtotime($fecha));
         }
         try {
-            return $this->call("v2/lrfc/consultar/by-nombre/{$fecha}/{$nombre}");
+            return json_decode($this->call("v2/lrfc/consultar/by-nombre/{$fecha}/{$nombre}"));
         } catch (LrfcException $e) {
             if ($e->getCode() == 404) {
                 return null;
@@ -62,7 +62,7 @@ class Lrfc {
             throw new LrfcException('El código postal no es válido');
         }
         try {
-            return $this->call("v2/lrfc/consultar/by-cp/{$fecha}/{$cp}");
+            return json_decode($this->call("v2/lrfc/consultar/by-cp/{$fecha}/{$cp}"));
         } catch (LrfcException $e) {
             if ($e->getCode() == 404) {
                 return null;
@@ -97,6 +97,6 @@ class Lrfc {
             throw new LrfcException('El servicio regresó un código de error ' . $http_code . ' ' . $result, $http_code);
         }
         curl_close($curl);
-        return json_decode($result);
+        return $result;
     }
 }
