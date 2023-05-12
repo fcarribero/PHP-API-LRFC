@@ -15,6 +15,10 @@ class Lrfc {
         return $this->call('version');
     }
 
+    public function status(): string {
+        return $this->call('status');
+    }
+
     public function getByRFC($rfc, $fecha = null) {
         if ($fecha === null) {
             $fecha = date('Y-m-d');
