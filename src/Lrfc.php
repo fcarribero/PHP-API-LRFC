@@ -5,17 +5,17 @@ namespace Advans\Api\Lrfc;
 
 class Lrfc {
 
-    protected Config $config;
+    protected $config;
 
     public function __construct(Config $config) {
         $this->config = $config;
     }
 
-    public function version(): string {
+    public function version() {
         return $this->call('version');
     }
 
-    public function status(): string {
+    public function status() {
         return $this->call('status');
     }
 

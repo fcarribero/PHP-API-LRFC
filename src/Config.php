@@ -8,7 +8,7 @@ class Config {
     public $base_url, $key;
 
     public function __construct($args) {
-        $this->base_url = $args['base_url'] ?? null;
+        $this->base_url =  @$args['base_url'];
         if (!$this->base_url) {
             throw new Exception('base_url is required');
         }
@@ -16,7 +16,7 @@ class Config {
             $this->base_url .= '/';
         }
 
-        $this->key = $args['key'] ?? null;
+        $this->key = @$args['key'];
         if (!$this->key) {
             throw new Exception('key is required');
         }
