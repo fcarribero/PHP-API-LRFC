@@ -46,6 +46,8 @@ class Lrfc {
             $fecha = date('Y-m-d', strtotime($fecha));
         }
         try {
+            $fecha = urlencode($fecha);
+            $nombre = urlencode($nombre);
             return json_decode($this->call("v2/lrfc/consultar/by-nombre/{$fecha}/{$nombre}"));
         } catch (LrfcException $e) {
             if ($e->getCode() == 404) {
@@ -66,6 +68,8 @@ class Lrfc {
             throw new LrfcException('El código postal no es válido');
         }
         try {
+            $fecha = urlencode($fecha);
+            $cp = urlencode($cp);
             return json_decode($this->call("v2/lrfc/consultar/by-cp/{$fecha}/{$cp}"));
         } catch (LrfcException $e) {
             if ($e->getCode() == 404) {
