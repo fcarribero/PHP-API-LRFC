@@ -70,7 +70,7 @@ class Lrfc {
         try {
             $fecha = urlencode($fecha);
             $cp = urlencode($cp);
-            return json_decode($this->call("v2/lrfc/consultar/by-cp/{$fecha}/{$cp}"));
+            return json_decode($this->call("v2/lrfc/consultar/by-codigo-postal/{$fecha}/{$cp}"));
         } catch (LrfcException $e) {
             if ($e->getCode() == 404) {
                 return null;
