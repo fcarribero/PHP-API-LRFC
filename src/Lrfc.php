@@ -57,6 +57,12 @@ class Lrfc {
         }
     }
 
+    /**
+     * @param $cp
+     * @param $fecha
+     * @return bool
+     * @throws LrfcException
+     */
     public function getByCodigoPostal($cp, $fecha = null) {
         if ($fecha === null) {
             $fecha = date('Y-m-d');
@@ -70,10 +76,11 @@ class Lrfc {
         try {
             $fecha = urlencode($fecha);
             $cp = urlencode($cp);
-            return json_decode($this->call("v2/lrfc/consultar/by-codigo-postal/{$fecha}/{$cp}"));
+            $this->call("v2/lrfc/consultar/by-codigo-postal/{$fecha}/{$cp}");
+            return true;
         } catch (LrfcException $e) {
             if ($e->getCode() == 404) {
-                return null;
+                return false;
             }
             throw $e;
         }
