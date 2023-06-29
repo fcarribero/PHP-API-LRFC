@@ -12,7 +12,7 @@ $ composer require advans/php-api-lrfc
 ## Ejemplo
 
 ````
-$config = new \Advans\Api\BovedaCSD\Config([
+$config = new \Advans\Api\Lrfc\Config([
     'base_url' => '*************************',
     'key' => '**********************'
 ]);
